@@ -20,3 +20,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+/*
+    fix the material input not in full width
+*/
+div[text-width-full] label {
+    width: 100%;
+}
