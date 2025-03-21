@@ -4,7 +4,9 @@
 </div>
 @code{
     [Parameter]
-
+    /*Please note that ChildContent name is implicit Template Tag, such that using only component name tag to wrap the child content is sufficient
+     * 
+     * otherwise name as "ChildContent" <TemplateTag></TemplateTag> needs to be stated for passing the content */
     public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
