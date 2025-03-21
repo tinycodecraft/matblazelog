@@ -1,0 +1,52 @@
+
+<div class="mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-@(GetTablet())-tablet mdc-layout-grid__cell--span-@(GetDesktop())-desktop" @attributes="@CapturedAttributes">
+    @ChildContent
+</div>
+@code{
+    [Parameter]
+
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public int Consume { get; set; } = 4;
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> CapturedAttributes { get; set; }
+
+    private int GetTablet()
+    {
+        switch(Consume)
+        {
+            case 1:
+                return 2;
+            case 2:
+                return 8;
+            case 3:
+                return 6;
+            case 4:
+                return 8;
+            default:
+                return 8;
+
+        }
+
+    }
+    private int GetDesktop()
+    {
+        switch (Consume)
+        {
+            case 1:
+                return 3;
+            case 2:
+                return 6;
+            case 3:
+                return 9;
+            case 4:
+                return 12;
+            default:
+                return 12;
+
+        }
+
+    }
+}

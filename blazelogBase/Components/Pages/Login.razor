@@ -1,0 +1,90 @@
+﻿@inject LayoutStateModel GlobalState
+@inject ISender Commander
+@rendermode InteractiveServer
+
+@using System.Text.RegularExpressions
+@using System.ComponentModel.DataAnnotations
+
+@using blazelogBase.Controllers
+@using blazelogBase.Models
+@using blazelogBase.Components.Layout
+@using Material.Blazor
+
+<LayoutView Layout="typeof(MainLayout)">
+    <PageTitle>Login</PageTitle>
+    <HeadContent>
+        <style>
+            main {
+            background: #f0f088;
+            }
+        </style>
+    </HeadContent>
+    <div class="container">
+        <EditForm Model="@_model">
+            <DataAnnotationsValidator />
+            <div class="mdc-layout-grid">
+                <div class="mdc-layout-grid__inner">
+                    <GridCell Consume="4">
+                        <h2 class="align-content-center">Login</h2>
+                    </GridCell>
+                    <GridCell Consume="2"></GridCell>
+                    <GridCell Consume="2">
+                        <MBTextField 
+                            IconFoundry="@MBIconHelper.MIFoundry(MBIconMITheme.TwoTone)"
+                            LeadingIcon="person"
+                             
+                            @bind-Value="@_model.UserId" Label="User Id" style="margin:6px;" TextInputStyle="MBTextInputStyle.Outlined" />
+                    </GridCell>
+                    <GridCell Consume="2">
+                        <p>
+                            <MBIcon IconFoundry="@MBIconHelper.FAFoundry(relativeSize: MBIconFARelativeSize.FiveTimes)"
+                                    IconName="fa-cat" />
+                            FontAwesome Foundry with relativeSize: 5x
+                        </p>
+                    </GridCell>
+                    <GridCell Consume="2">
+                        <MBTextField @bind-Value="@_model.Password" Label="Password" style="margin:6px;" type="password" TextInputStyle="MBTextInputStyle.Outlined" />
+                    </GridCell>
+
+
+                </div>
+            </div>
+
+
+
+        </EditForm>
+
+    </div>
+
+
+
+</LayoutView>
+
+
+@code {
+
+    private LoginModel _model = new();
+
+
+    private bool _isProcessing = false;
+    private string? _error = null;
+
+    private async Task<bool> LoginAsync()
+    {
+        _error = null;
+        _isProcessing = true;
+        try
+        {
+            var result= await Task.FromResult(true);
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _isProcessing = false;
+            _error = ex.Message;
+        }
+
+        return false;
+    }
+
+}
