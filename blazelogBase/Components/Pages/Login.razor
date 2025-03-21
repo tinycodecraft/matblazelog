@@ -30,23 +30,23 @@
                     <GridCell Consume="2"></GridCell>
                     <GridCell Consume="2" text-width-full>
                         <MBTextField 
-                            IconFoundry="@MBIconHelper.MIFoundry(MBIconMITheme.TwoTone)"
-                            LeadingIcon="person"
-                             
-                            @bind-Value="@_model.UserId" Label="User Id" style="margin:6px;" TextInputStyle="MBTextInputStyle.Outlined" />
+                        IconFoundry="@MBIconHelper.MIFoundry(MBIconMITheme.TwoTone)"
+                        LeadingIcon="person"
+
+                        @bind-Value="@_model.UserId" Label="User Id" style="margin:6px;" TextInputStyle="MBTextInputStyle.Outlined" />
                     </GridCell>
                     <GridCell Consume="2" >
                         <p>
                             <MBIcon IconFoundry="@MBIconHelper.FAFoundry(relativeSize: MBIconFARelativeSize.FiveTimes)"
-                                    IconName="fa-cat" />
+                            IconName="fa-cat" />
                             FontAwesome Foundry with relativeSize: 5x
                         </p>
                     </GridCell>
                     <GridCell Consume="2" text-width-full>
                         <MBTextField 
-                            IconFoundry="@MBIconHelper.MIFoundry(MBIconMITheme.TwoTone)"
-                            LeadingIcon="password"
-                            @bind-Value="@_model.Password" Label="Password" style="margin:6px;" type="password" TextInputStyle="MBTextInputStyle.Outlined" />
+                        IconFoundry="@MBIconHelper.MIFoundry(MBIconMITheme.TwoTone)"
+                        LeadingIcon="password"
+                        @bind-Value="@_model.Password" Label="Password" style="margin:6px;" type="password" TextInputStyle="MBTextInputStyle.Outlined" />
                     </GridCell>
 
 
@@ -71,6 +71,14 @@
 
     private bool _isProcessing = false;
     private string? _error = null;
+
+    private bool _eyeOpen = false;
+
+    private async Task ToggleEye()
+    {
+        _eyeOpen = !_eyeOpen;
+        StateHasChanged();
+    }
 
     private async Task<bool> LoginAsync()
     {
