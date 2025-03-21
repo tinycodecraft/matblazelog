@@ -6,7 +6,9 @@
     [Parameter]
     /*Please note that ChildContent name is implicit Template Tag, such that using only component name tag to wrap the child content is sufficient
      * 
-     * otherwise name as "ChildContent" <TemplateTag></TemplateTag> needs to be stated for passing the content */
+     * otherwise name as "ChildContent" <TemplateTag></TemplateTag> needs to be stated for passing the content 
+     * we can also provide argument to Template Parameter ,with type like RenderFragment<TItem>, for example, we use Context Parameter to define variable used 
+     * within the Content of TemplateTag, i.e. <TemplateTag Context="item">{...item...}</TemplateTag> */
     public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
